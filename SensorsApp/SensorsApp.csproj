@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ReceiverPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="TachometerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

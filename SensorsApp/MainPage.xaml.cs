@@ -12,6 +12,7 @@ namespace SensorsApp
     public partial class MainPage : ContentPage
     {
         public TachometerPage tachometerPage = new TachometerPage();
+        public ReceiverPage receiverPage = new ReceiverPage();
 
         public MainPage()
         {
@@ -20,9 +21,14 @@ namespace SensorsApp
             InitializeComponent();
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void TachometerButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(tachometerPage);
+        }
+
+        private async void ReceiverButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(receiverPage);
         }
     }
 }

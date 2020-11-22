@@ -5,7 +5,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Label FontSize="48" Text="Demo"/>
-            <Button Text="Tachometr" Clicked="Button_Clicked" x:Name="Button"/>
+            <Button Text="Tachometr" x:Name="TachometerButton" Clicked="TachometerButton_Clicked"/>
+            <Button Text="Přijímač" x:Name="ReceiverButton" Clicked="ReceiverButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
