@@ -1,21 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="SensorsApp.ReceiverPage">
     <ContentPage.Content>
         <StackLayout Margin="16,0">
-            <StackLayout x:Name="filterContainer" Orientation="Horizontal">
-                <Label Text="test"/>
-                <Label Text="test"/>
-                <Label Text="test"/>
+            <StackLayout x:Name="filterContainer" Orientation="Horizontal" Spacing="24" Margin="0,16">
+                <skia:SKCanvasView x:Name="wifiIcon"
+                                   WidthRequest="48"
+                                   HeightRequest="40"
+                                   PaintSurface="OnWifiIconPaintSurface"/>
+
+                <skia:SKCanvasView x:Name="bluetoothIcon"
+                                   WidthRequest="36"
+                                   HeightRequest="40"
+                                   PaintSurface="OnBluetoothIconPaintSurface"/>
+
+                <skia:SKCanvasView x:Name="celltowerIcon"
+                                   WidthRequest="40"
+                                   HeightRequest="40"
+                                   PaintSurface="OnCelltowerIconPaintSurface"/>
             </StackLayout>
 
             <BoxView HorizontalOptions="FillAndExpand" HeightRequest="1" Color="Gray"/>
 
             <StackLayout x:Name="sourceContainer" Orientation="Vertical">
-                <Label Text="test"/>
-                <Label Text="test"/>
-                <Label Text="test"/>
+                <Frame Padding="16">
+                    <StackLayout Orientation="Horizontal" Spacing="16">
+                        <skia:SKCanvasView VerticalOptions="Center"
+                                           WidthRequest="48" HeightRequest="40"
+                                           PaintSurface="OnWifiIconPaintSurface"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label FontAttributes="Bold" Text="Internet1" FontSize="24"/>
+                            <Label FontAttributes="Bold" Text="Síla signálu v dB" FontSize="16"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="16">
+                    <StackLayout Orientation="Horizontal" Spacing="16">
+                        <skia:SKCanvasView VerticalOptions="Center"
+                                           WidthRequest="48" HeightRequest="40"
+                                           PaintSurface="OnWifiIconPaintSurface"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label FontAttributes="Bold" Text="UPC123123123" FontSize="24"/>
+                            <Label FontAttributes="Bold" Text="Síla signálu v dB" FontSize="16"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="16">
+                    <StackLayout Orientation="Horizontal" Spacing="28">
+                        <skia:SKCanvasView VerticalOptions="Center"
+                                           WidthRequest="36" HeightRequest="40"
+                                           PaintSurface="OnBluetoothIconPaintSurface"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label FontAttributes="Bold" Text="Honzův iPhone" FontSize="24"/>
+                            <Label FontAttributes="Bold" Text="Síla signálu v dB" FontSize="16"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Padding="16">
+                    <StackLayout Orientation="Horizontal" Spacing="24">
+                        <skia:SKCanvasView VerticalOptions="Center"
+                                           WidthRequest="40" HeightRequest="40"
+                                           PaintSurface="OnCelltowerIconPaintSurface"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label FontAttributes="Bold" Text="Věž 44441" FontSize="24"/>
+                            <Label FontAttributes="Bold" Text="LAC | MCC | MNC" FontSize="16"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
