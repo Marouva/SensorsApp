@@ -85,7 +85,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\kompas.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SensorsApp\SensorsApp.csproj">

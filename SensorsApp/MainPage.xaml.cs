@@ -14,6 +14,7 @@ namespace SensorsApp
         public TachometerPage tachometerPage = new TachometerPage();
         public ReceiverPage receiverPage = new ReceiverPage();
         public DeviceInfo deviceInfo = new DeviceInfo();
+        public CompassPage compassPage = new CompassPage();
 
         public MainPage()
         {
@@ -35,6 +36,11 @@ namespace SensorsApp
         private async void DeviceInfo_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(deviceInfo);
+        }
+
+        private async void CompassButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(compassPage);
         }
     }
 }

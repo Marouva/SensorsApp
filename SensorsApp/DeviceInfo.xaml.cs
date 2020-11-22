@@ -21,8 +21,10 @@ namespace SensorsApp
         {
             base.OnAppearing();
             List<DeviceInfoListItem> items = new List<DeviceInfoListItem>();
-            items.Add(new DeviceInfoListItem("test", "test"));
-            items.Add(new DeviceInfoListItem("test2", "test2"));
+            items.Add(new DeviceInfoListItem("Výrobce", "Xiaomi"));
+            items.Add(new DeviceInfoListItem("Model", "Redmi cosi"));
+            items.Add(new DeviceInfoListItem("Název zařízení", "TohlenctoJeHejnal"));
+            items.Add(new DeviceInfoListItem("Verze OS", "Android 6.0"));
 
             infoList.ItemsSource = items;
         }
