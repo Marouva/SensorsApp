@@ -87,7 +87,7 @@ namespace SensorsApp
             canvas.DrawPath(velocityPath, velocityPaint);
 
             // Text
-            var textPaint = new SKPaint
+            var velocityTextPaint = new SKPaint
             {
                 TextSize = 256.0f,
                 IsAntialias = true,
@@ -96,7 +96,18 @@ namespace SensorsApp
                 TextAlign = SKTextAlign.Center
             };
 
-            canvas.DrawText(Math.Round(velocity).ToString(), info.Width / 2.0f, (drawResolution / 2.0f) + 96.0f, textPaint);
+            canvas.DrawText(Math.Round(velocity).ToString(), info.Width / 2.0f, (drawResolution / 2.0f) + 80.0f, velocityTextPaint);
+
+            var unitTextPaint = new SKPaint
+            {
+                TextSize = 80.0f,
+                IsAntialias = true,
+                Color = new SKColor(192, 204, 218),
+                Style = SKPaintStyle.Fill,
+                TextAlign = SKTextAlign.Center
+            };
+
+            canvas.DrawText("km/h", info.Width / 2.0f, (drawResolution / 2.0f) + 300.0f, unitTextPaint);
         }
 
         private void resetButton_Clicked(object sender, EventArgs e)
