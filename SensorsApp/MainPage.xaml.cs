@@ -13,6 +13,7 @@ namespace SensorsApp
     {
         public TachometerPage tachometerPage = new TachometerPage();
         public ReceiverPage receiverPage = new ReceiverPage();
+        public DeviceInfo deviceInfo = new DeviceInfo();
 
         public MainPage()
         {
@@ -29,6 +30,11 @@ namespace SensorsApp
         private async void ReceiverButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(receiverPage);
+        }
+
+        private async void DeviceInfo_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(deviceInfo);
         }
     }
 }
