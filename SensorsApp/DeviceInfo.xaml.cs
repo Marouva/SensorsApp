@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EssentialsDeviceInfo = Xamarin.Essentials.DeviceInfo;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,10 +22,10 @@ namespace SensorsApp
         {
             base.OnAppearing();
             List<DeviceInfoListItem> items = new List<DeviceInfoListItem>();
-            items.Add(new DeviceInfoListItem("Výrobce", "Xiaomi"));
-            items.Add(new DeviceInfoListItem("Model", "Redmi cosi"));
-            items.Add(new DeviceInfoListItem("Název zařízení", "TohlenctoJeHejnal"));
-            items.Add(new DeviceInfoListItem("Verze OS", "Android 6.0"));
+            items.Add(new DeviceInfoListItem("Výrobce", EssentialsDeviceInfo.Manufacturer));
+            items.Add(new DeviceInfoListItem("Model", EssentialsDeviceInfo.Model));
+            items.Add(new DeviceInfoListItem("Název zařízení", EssentialsDeviceInfo.Name));
+            items.Add(new DeviceInfoListItem("Verze OS", EssentialsDeviceInfo.VersionString));
 
             infoList.ItemsSource = items;
         }
