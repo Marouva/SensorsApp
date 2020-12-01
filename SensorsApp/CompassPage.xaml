@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SensorsApp.CompassPage"
+             Title="Kompas" Padding="20,20,20,20">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65*" />
+                <RowDefinition Height="35*" />
+            </Grid.RowDefinitions>
+
+            <Image Grid.Column="0" Grid.Row="0" Source="kompas.png" x:Name="compassPicture" />
+
+            <StackLayout Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="0,20,0,0">
+                <StackLayout Orientation="Horizontal">
+                    <Label FontSize="Large" FontAttributes="Bold" Text="Z. Délka" />
+                    <Label x:Name="longitudeLabel" Text="0.000000" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label FontSize="Large" FontAttributes="Bold" Text="Z. Šířka" />
+                    <Label x:Name="latitudeLabel" Text="0.000000" />
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
