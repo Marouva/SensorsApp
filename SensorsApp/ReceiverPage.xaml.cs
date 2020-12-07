@@ -46,6 +46,10 @@ namespace SensorsApp
             canvas.Translate(-bounds.MidX, -bounds.MidY);
 
             canvas.DrawPath(svg, paint);
+
+
+            Core.Wifi.UpdateWifiNetworks();
+                
         }
 
         void OnBluetoothIconPaintSurface(object sender, SKPaintSurfaceEventArgs args)

@@ -59,7 +59,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\Wifi.cs" />
+    <Compile Include="Core\Wifi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -86,8 +86,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
-    <Folder Include="Util\" />
     <AndroidResource Include="Resources\drawable\kompas.png" />
+    <Folder Include="Core\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SensorsApp\SensorsApp.csproj">

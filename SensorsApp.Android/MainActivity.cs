@@ -19,6 +19,8 @@ namespace SensorsApp.Droid
 
             base.OnCreate(savedInstanceState);
 
+            SensorsApp.Core.Wifi.UpdateWifiNetworks = SensorsApp.Droid.Core.Wifi.UpdateWifiNetworks;
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
