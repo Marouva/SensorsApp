@@ -27,6 +27,8 @@ namespace SensorsApp
             Title = "Tachometr";
 
             InitializeComponent();
+
+            Core.Gyroscope.Enable();
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -112,7 +114,8 @@ namespace SensorsApp
 
         private void resetButton_Clicked(object sender, EventArgs e)
         {
-            velocity = 0.0f;
+            //velocity = 0.0f;
+            velocity = Core.Gyroscope.GetRotation().X;
             meterCanvas.InvalidateSurface();
         }
     }
