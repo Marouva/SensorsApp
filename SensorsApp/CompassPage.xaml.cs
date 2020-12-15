@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using SensorsApp.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using SkiaSharp.Views.Forms;
-using SkiaSharp;
 
 namespace SensorsApp
 {
@@ -17,12 +10,22 @@ namespace SensorsApp
         public CompassPage()
         {
             InitializeComponent();
+            Compass.AddCallback(() =>
+            {
+                compassPicture.Rotation = Compass.heading;
+            });
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            compassPicture.RotateTo(20);
+            Compass.Enable();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Compass.Disable();
         }
     }
 }
