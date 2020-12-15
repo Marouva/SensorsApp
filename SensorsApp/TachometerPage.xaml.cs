@@ -29,6 +29,7 @@ namespace SensorsApp
             InitializeComponent();
 
             Core.Gyroscope.Enable();
+            Core.Gyroscope.SetCallback((() => { Console.WriteLine(Core.Gyroscope.GetDeltaRotation().X); }));
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)

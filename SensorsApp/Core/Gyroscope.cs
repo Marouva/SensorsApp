@@ -14,13 +14,21 @@ namespace SensorsApp.Core
 
         public static void Enable()
         {
-            if (enabledOnce)
+            if (!enabledOnce)
             {
                 Xamarin.Essentials.Gyroscope.ReadingChanged += Gyroscope_ReadingChanged;
                 enabledOnce = true;
             }
 
             Xamarin.Essentials.Gyroscope.Start(speed);
+        }
+
+        public static void SetCallback(Action callback)
+        {
+            Xamarin.Essentials.Gyroscope.ReadingChanged += (object sender, GyroscopeChangedEventArgs args) =>
+            {
+                callback();
+            };
         }
 
         public static void Disable()
@@ -31,9 +39,9 @@ namespace SensorsApp.Core
         public static void Gyroscope_ReadingChanged(object sender, GyroscopeChangedEventArgs e)
         {
             var data = e.Reading;
-            
             deltaRotation = data.AngularVelocity;
-            rotation += data.AngularVelocity; 
+            rotation += data.AngularVelocity;
+            System.Diagnostics.Debug.WriteLine("OOF!");
         }
 
         public static Vector3 GetDeltaRotation()
