@@ -10,7 +10,7 @@ __pokaż kutasa__
 | Accelerometer | Funktioniert nicht |
 | Bluetooth |  |
 | Compass | ✓ |
-| DeviceInfo |  |
+| DeviceInfo | ✓ |
 | GPS |  |
 | Gyroscope | ✓ |
 | Magnetometer |  |

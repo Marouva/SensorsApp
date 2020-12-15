@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using EssentialsDeviceInfo = Xamarin.Essentials.DeviceInfo;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static SensorsApp.Core.DeviceInfo;
 
 namespace SensorsApp
 {
@@ -19,10 +18,10 @@ namespace SensorsApp
         {
             base.OnAppearing();
             List<DeviceInfoListItem> items = new List<DeviceInfoListItem>();
-            items.Add(new DeviceInfoListItem("Výrobce", EssentialsDeviceInfo.Manufacturer));
-            items.Add(new DeviceInfoListItem("Model", EssentialsDeviceInfo.Model));
-            items.Add(new DeviceInfoListItem("Název zařízení", EssentialsDeviceInfo.Name));
-            items.Add(new DeviceInfoListItem("Verze OS", EssentialsDeviceInfo.VersionString));
+            items.Add(new DeviceInfoListItem("Výrobce", GetManufacturer()));
+            items.Add(new DeviceInfoListItem("Model", GetModel()));
+            items.Add(new DeviceInfoListItem("Název zařízení", GetName()));
+            items.Add(new DeviceInfoListItem("Verze OS", GetVersion()));
 
             infoList.ItemsSource = items;
         }
