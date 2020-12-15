@@ -22,6 +22,11 @@ namespace SensorsApp.Core
 
             Xamarin.Essentials.Gyroscope.Start(speed);
         }
+        
+        public static void Disable()
+        {
+            Xamarin.Essentials.Gyroscope.Stop();
+        }
 
         public static void AddCallback(Action callback)
         {
@@ -29,17 +34,11 @@ namespace SensorsApp.Core
                 (object sender, GyroscopeChangedEventArgs args) => { callback(); };
         }
 
-        public static void Disable()
-        {
-            Xamarin.Essentials.Gyroscope.Stop();
-        }
-
         public static void Gyroscope_ReadingChanged(object sender, GyroscopeChangedEventArgs e)
         {
             var data = e.Reading;
             deltaRotation = data.AngularVelocity;
             rotation += data.AngularVelocity;
-            System.Diagnostics.Debug.WriteLine("OOF!");
         }
 
         public static Vector3 GetDeltaRotation()

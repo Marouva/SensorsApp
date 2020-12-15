@@ -23,7 +23,6 @@ namespace SensorsApp.Core
         public static void Disable()
         {
             Xamarin.Essentials.Compass.Stop();
-            
         }
 
         private static void CompassOnReadingChanged(object sender, CompassChangedEventArgs e)
