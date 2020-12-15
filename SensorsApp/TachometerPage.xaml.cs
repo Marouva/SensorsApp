@@ -28,8 +28,22 @@ namespace SensorsApp
 
             InitializeComponent();
 
+            Core.Gyroscope.AddCallback((() => { velocity = Core.Gyroscope.GetRotation().X; meterCanvas.InvalidateSurface(); }));
+        }
+
+
+        protected override void OnAppearing()
+        {
             Core.Gyroscope.Enable();
-            Core.Gyroscope.SetCallback((() => { Console.WriteLine(Core.Gyroscope.GetDeltaRotation().X); }));
+
+            base.OnAppearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+            Core.Gyroscope.Disable();
+
+            base.OnDisappearing();
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)

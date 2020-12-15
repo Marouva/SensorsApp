@@ -23,12 +23,10 @@ namespace SensorsApp.Core
             Xamarin.Essentials.Gyroscope.Start(speed);
         }
 
-        public static void SetCallback(Action callback)
+        public static void AddCallback(Action callback)
         {
-            Xamarin.Essentials.Gyroscope.ReadingChanged += (object sender, GyroscopeChangedEventArgs args) =>
-            {
-                callback();
-            };
+            Xamarin.Essentials.Gyroscope.ReadingChanged +=
+                (object sender, GyroscopeChangedEventArgs args) => { callback(); };
         }
 
         public static void Disable()
