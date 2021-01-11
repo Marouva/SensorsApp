@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SensorsApp.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,6 +18,30 @@ namespace SensorsApp
         public ReceiverPage()
         {
             InitializeComponent();
+            Bluetooth.SetAction(() =>
+            {
+                //Console.WriteLine("SMEJD " + Bluetooth.bluetoothDevices);
+                //DisplayAlert("OOF", Bluetooth.bluetoothDevices.ToString(), "sad");
+                List<Receiver> receivers = new List<Receiver>();
+                foreach (KeyValuePair<string, string> bluetoothDevice in Bluetooth.bluetoothDevices)
+                {
+                    receivers.Add(new Receiver(bluetoothDevice.Value, bluetoothDevice.Key));
+                }
+
+                receiverList.ItemsSource = receivers;
+            });
+        }
+        
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Bluetooth.Register();
+            receiverList.ItemsSource = new List<Receiver>();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
         }
 
         void OnWifiIconPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -48,8 +72,7 @@ namespace SensorsApp
             canvas.DrawPath(svg, paint);
 
 
-            Core.Wifi.UpdateWifiNetworks();
-                
+            //Core.Wifi.UpdateWifiNetworks();
         }
 
         void OnBluetoothIconPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -106,6 +129,18 @@ namespace SensorsApp
             canvas.Translate(-bounds.MidX, -bounds.MidY);
 
             canvas.DrawPath(svg, paint);
+        }
+    }
+
+    public class Receiver
+    {
+        public String Name { get; set; }
+        public String Description { get; set; }
+
+        public Receiver(String Name, String Description)
+        {
+            this.Name = Name;
+            this.Description = Description;
         }
     }
 }

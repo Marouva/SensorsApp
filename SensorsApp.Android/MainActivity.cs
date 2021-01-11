@@ -1,11 +1,14 @@
 ﻿using System;
-
+using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
+using SensorsApp.Droid.Core;
 
 namespace SensorsApp.Droid
 {
@@ -19,13 +22,18 @@ namespace SensorsApp.Droid
 
             base.OnCreate(savedInstanceState);
 
-            SensorsApp.Core.Wifi.UpdateWifiNetworks = SensorsApp.Droid.Core.Wifi.UpdateWifiNetworks;
+            //SensorsApp.Core.Wifi.UpdateWifiNetworks = Core.Wifi.UpdateWifiNetworks;
+            //Bluetooth.Register();
+            Bluetooth.PrepareRegister();
+            
+            //SETUP
+            //ActivityCompat.RequestPermissions(this, new[]{Manifest.Permission.Bluetooth, Manifest.Permission.BluetoothAdmin, Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation}, 1);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

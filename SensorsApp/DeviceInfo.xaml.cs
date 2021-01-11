@@ -17,11 +17,13 @@ namespace SensorsApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            List<DeviceInfoListItem> items = new List<DeviceInfoListItem>();
-            items.Add(new DeviceInfoListItem("Výrobce", GetManufacturer()));
-            items.Add(new DeviceInfoListItem("Model", GetModel()));
-            items.Add(new DeviceInfoListItem("Název zařízení", GetName()));
-            items.Add(new DeviceInfoListItem("Verze OS", GetVersion()));
+            List<DeviceInfoListItem> items = new List<DeviceInfoListItem>
+            {
+                new DeviceInfoListItem("Výrobce", GetManufacturer()),
+                new DeviceInfoListItem("Model", GetModel()),
+                new DeviceInfoListItem("Název zařízení", GetName()),
+                new DeviceInfoListItem("Verze OS", GetVersion())
+            };
 
             infoList.ItemsSource = items;
         }

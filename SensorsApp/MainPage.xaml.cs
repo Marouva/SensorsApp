@@ -15,7 +15,7 @@ namespace SensorsApp
         public ReceiverPage receiverPage = new ReceiverPage();
         public DeviceInfo deviceInfo = new DeviceInfo();
         public CompassPage compassPage = new CompassPage();
-
+        
         public MainPage()
         {
             Title = "Demo stránka";
