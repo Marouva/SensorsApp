@@ -8,7 +8,7 @@ __pokaż kutasa__
 | API | Status |
 |---|---|
 | Accelerometer | Funktioniert nicht |
-| Bluetooth |  |
+| Bluetooth | ✓ |
 | Compass | ✓ |
 | DeviceInfo | ✓ |
 | GPS |  |
