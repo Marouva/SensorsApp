@@ -18,10 +18,8 @@ namespace SensorsApp
         public ReceiverPage()
         {
             InitializeComponent();
-            Bluetooth.SetAction(() =>
+            Bluetooth.SetChangeAction(() =>
             {
-                //Console.WriteLine("SMEJD " + Bluetooth.bluetoothDevices);
-                //DisplayAlert("OOF", Bluetooth.bluetoothDevices.ToString(), "sad");
                 List<Receiver> receivers = new List<Receiver>();
                 foreach (KeyValuePair<string, string> bluetoothDevice in Bluetooth.bluetoothDevices)
                 {
@@ -35,13 +33,18 @@ namespace SensorsApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            Wifi.wifiNetworks.Clear();
+            Bluetooth.bluetoothDevices.Clear();
             Bluetooth.Register();
+            Wifi.Register();
             receiverList.ItemsSource = new List<Receiver>();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            Bluetooth.Unregister();
+            Wifi.Unregister();
         }
 
         void OnWifiIconPaintSurface(object sender, SKPaintSurfaceEventArgs args)

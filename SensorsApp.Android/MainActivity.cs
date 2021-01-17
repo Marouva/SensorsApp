@@ -21,13 +21,18 @@ namespace SensorsApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
-            //SensorsApp.Core.Wifi.UpdateWifiNetworks = Core.Wifi.UpdateWifiNetworks;
-            //Bluetooth.Register();
+            
             Bluetooth.PrepareRegister();
             
             //SETUP
-            //ActivityCompat.RequestPermissions(this, new[]{Manifest.Permission.Bluetooth, Manifest.Permission.BluetoothAdmin, Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation}, 1);
+            ActivityCompat.RequestPermissions(this, new[]
+            {
+                Manifest.Permission.Bluetooth,
+                Manifest.Permission.BluetoothAdmin,
+                Manifest.Permission.AccessCoarseLocation,
+                Manifest.Permission.AccessFineLocation,
+                Manifest.Permission.ChangeWifiState
+            }, 1);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

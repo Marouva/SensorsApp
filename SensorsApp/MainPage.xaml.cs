@@ -18,8 +18,6 @@ namespace SensorsApp
         
         public MainPage()
         {
-            Title = "Demo stránka";
-
             InitializeComponent();
         }
 

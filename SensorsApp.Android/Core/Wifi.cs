@@ -12,10 +12,14 @@ namespace SensorsApp.Droid.Core
         private static WifiManager wifi;
         private static WifiReceiver wifiReceiver;
 
-        public static void UpdateWifiNetworks()
+        public static void PrepareRegister()
         {
-            SensorsApp.Core.Wifi.WiFiNetworks = new List<string>();
+            SensorsApp.Core.Wifi.SetRegisterAction(Register);
+            SensorsApp.Core.Wifi.SetUnregisterAction(Unregister);
+        }
 
+        public static void Register()
+        {
             // Get a handle to the Wifi
             wifi = (WifiManager)Android.App.Application.Context.GetSystemService(Context.WifiService);
 
@@ -25,6 +29,11 @@ namespace SensorsApp.Droid.Core
             wifi.StartScan();
         }
 
+        public static void Unregister()
+        {
+            Android.App.Application.Context.UnregisterReceiver(wifiReceiver);
+        }
+
         class WifiReceiver : BroadcastReceiver
         {
             public override void OnReceive(Context context, Intent intent)
@@ -32,7 +41,18 @@ namespace SensorsApp.Droid.Core
                 IList<ScanResult> scanwifinetworks = wifi.ScanResults;
                 foreach (ScanResult wifinetwork in scanwifinetworks)
                 {
-                    SensorsApp.Core.Wifi.WiFiNetworks.Add(wifinetwork.Ssid);
+                    String? bssid = wifinetwork.Bssid;
+
+                    if (bssid == null)
+                    {
+                        continue;
+                    }
+
+                    if (!SensorsApp.Core.Wifi.wifiNetworks.ContainsKey(bssid))
+                    {
+                        SensorsApp.Core.Wifi.wifiNetworks.Add(bssid, wifinetwork.Ssid);
+                        SensorsApp.Core.Wifi.ListChanged();
+                    }
                 }
             }
         }

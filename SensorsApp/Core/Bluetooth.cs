@@ -9,6 +9,7 @@ namespace SensorsApp.Core
     {
         private static Action changeAction;
         private static Action enableAction;
+        private static Action disableAction;
 
         public static Dictionary<String, String> bluetoothDevices = new Dictionary<string, string>();
 
@@ -22,7 +23,12 @@ namespace SensorsApp.Core
             enableAction?.Invoke();
         }
 
-        public static void SetAction(Action newAction)
+        public static void Unregister()
+        {
+            disableAction?.Invoke();
+        }
+
+        public static void SetChangeAction(Action newAction)
         {
             changeAction = newAction;
         }
@@ -30,6 +36,11 @@ namespace SensorsApp.Core
         public static void SetEnableAction(Action newEnableAction)
         {
             enableAction = newEnableAction;
+        }
+
+        public static void SetDisableAction(Action newDisableAction)
+        {
+            disableAction = newDisableAction;
         }
     }
 }

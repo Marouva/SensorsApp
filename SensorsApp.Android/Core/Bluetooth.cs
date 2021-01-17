@@ -1,7 +1,6 @@
 ﻿using System;
 using Android.Bluetooth;
 using Android.Content;
-using Android.Util;
 
 namespace SensorsApp.Droid.Core
 {
@@ -11,14 +10,15 @@ namespace SensorsApp.Droid.Core
 
         public static void PrepareRegister()
         {
-            SensorsApp.Core.Bluetooth.SetEnableAction(() =>
-            {
-                Register();   
-            });
+            Console.WriteLine("Registering events");
+            SensorsApp.Core.Bluetooth.SetEnableAction(Register);
+            
+            SensorsApp.Core.Bluetooth.SetDisableAction(Unregister);
         }
 
         public static void Register()
         {
+            Console.WriteLine("Registering event listener for Bluetooth");
             BluetoothAdapter bta = BluetoothAdapter.DefaultAdapter;
 
             if (bta == null || !bta.IsEnabled)
