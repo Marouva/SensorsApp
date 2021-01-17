@@ -5,7 +5,7 @@ using Android.Util;
 
 namespace SensorsApp.Droid.Core
 {
-    public class Bluetooth
+    public static class Bluetooth
     {
         private static BluetoothDeviceReceiver receiver;
 
