@@ -11,31 +11,43 @@ namespace SensorsApp
     public partial class TachometerPage : ContentPage
     {
         public const float MeterSpaceAngle = 30.0f;
-        public const float MeterMaxVelocity = 20.0f;
+        public const float MeterMaxVelocity = 150.0f;
         public const int   MinMeterMargin = 150;
-        public const int   MeterThicknes = 56;
+        public const int   MeterThickness = 56;
 
-        public float velocity = 7.0f;
+        public double velocity = 0.0;
+
+        private System.Timers.Timer updateTimer = new System.Timers.Timer(500);
 
         public TachometerPage()
         {
             InitializeComponent();
 
-            Core.Gyroscope.AddCallback((() => { velocity = Core.Gyroscope.GetRotation().X; meterCanvas.InvalidateSurface(); }));
+            updateTimer.Elapsed += (Object source, System.Timers.ElapsedEventArgs e) => { UpdatePage(); };
         }
 
         protected override void OnAppearing()
         {
+            base.OnAppearing();
             Core.Gyroscope.Enable();
 
-            base.OnAppearing();
+            UpdatePage();
+
+            updateTimer.Enabled = true;
         }
 
         protected override void OnDisappearing()
         {
+            base.OnDisappearing();
             Core.Gyroscope.Disable();
 
-            base.OnDisappearing();
+            updateTimer.Enabled = false;
+        }
+
+        private async void UpdatePage()
+        {
+            velocity = Core.GPS.GetVelocity() * 3.6; 
+            meterCanvas.InvalidateSurface();
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -46,7 +58,7 @@ namespace SensorsApp
             UpdateMeter(velocity, info, surface);
         }
 
-        public void UpdateMeter(float velocity, SKImageInfo info, SKSurface surface)
+        public void UpdateMeter(double velocity, SKImageInfo info, SKSurface surface)
         {
             SKCanvas canvas = surface.Canvas;
 
@@ -72,7 +84,7 @@ namespace SensorsApp
                 IsAntialias = true,
                 Color = new SKColor(192, 204, 218),
                 Style = SKPaintStyle.Stroke,
-                StrokeWidth = MeterThicknes
+                StrokeWidth = MeterThickness
             };
 
             SKPath basePath = new SKPath();
@@ -80,7 +92,7 @@ namespace SensorsApp
             canvas.DrawPath(basePath, basePaint);
 
             // Velocity
-            float velocityAngle = Math.Min(Math.Max((sweepAngle * velocity) / MeterMaxVelocity, 0.0f), sweepAngle);
+            float velocityAngle = (float)Math.Min(Math.Max((sweepAngle * velocity) / MeterMaxVelocity, 0.0f), sweepAngle);
 
             var velocityPaint = new SKPaint
             {
@@ -88,7 +100,7 @@ namespace SensorsApp
                 IsAntialias = true,
                 Color = new SKColor(230, 100, 100),
                 Style = SKPaintStyle.Stroke,
-                StrokeWidth = MeterThicknes
+                StrokeWidth = MeterThickness
             };
 
             SKPath velocityPath = new SKPath();
