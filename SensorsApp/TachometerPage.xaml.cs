@@ -4,6 +4,7 @@ using Xamarin.Forms.Xaml;
 
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using SensorsApp.Core;
 
 namespace SensorsApp
 {
@@ -46,6 +47,8 @@ namespace SensorsApp
 
         private async void UpdatePage()
         {
+            await GPS.Update();
+
             Device.BeginInvokeOnMainThread(() =>
             {
                 velocity = Core.GPS.GetVelocity() * 3.6; 
