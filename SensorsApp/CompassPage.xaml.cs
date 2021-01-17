@@ -48,7 +48,7 @@ namespace SensorsApp
             {
                 latitudeLabel.Text  = GPS.GetLatitude().ToString("0.000000");
                 longitudeLabel.Text = GPS.GetLongtitude().ToString("0.000000");
-            });            
+            });
         }
     }
 }

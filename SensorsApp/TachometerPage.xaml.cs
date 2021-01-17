@@ -46,8 +46,11 @@ namespace SensorsApp
 
         private async void UpdatePage()
         {
-            velocity = Core.GPS.GetVelocity() * 3.6; 
-            meterCanvas.InvalidateSurface();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                velocity = Core.GPS.GetVelocity() * 3.6; 
+                meterCanvas.InvalidateSurface();
+            });
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
