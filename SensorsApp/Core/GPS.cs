@@ -13,7 +13,7 @@ namespace SensorsApp.Core
         private static double latitude;
         private static double longtitude;
 
-        public static async void Update()
+        public static async bool Update()
         {
             try
             {
@@ -23,6 +23,7 @@ namespace SensorsApp.Core
                 velocity   = location.Speed.GetValueOrDefault();
                 latitude   = location.Latitude;
                 longtitude = location.Longitude;
+                return true;
             }
             catch (Exception e)
             {
