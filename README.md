@@ -11,7 +11,7 @@ __pokaż kutasa__
 | Bluetooth | ✓ |
 | Compass | ✓ |
 | DeviceInfo | ✓ |
-| GPS |  |
+| GPS | ✓ |
 | Gyroscope | ✓ |
 | Magnetometer | ANULOWANY |
 | MobileNetwork | ANULOWANY |
