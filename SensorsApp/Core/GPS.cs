@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace SensorsApp.Core
@@ -13,7 +14,7 @@ namespace SensorsApp.Core
         private static double latitude;
         private static double longtitude;
 
-        public static async bool Update()
+        public static async Task Update()
         {
             try
             {
@@ -23,7 +24,7 @@ namespace SensorsApp.Core
                 velocity   = location.Speed.GetValueOrDefault();
                 latitude   = location.Latitude;
                 longtitude = location.Longitude;
-                return true;
+                //return true;
             }
             catch (Exception e)
             {
