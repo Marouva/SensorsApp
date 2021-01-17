@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using SensorsApp.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,6 +13,7 @@ namespace SensorsApp
         public CompassPage()
         {
             InitializeComponent();
+
             Compass.AddCallback(() =>
             {
                 compassPicture.Rotation = Compass.heading;

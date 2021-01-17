@@ -30,7 +30,6 @@ namespace SensorsApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Core.Gyroscope.Enable();
 
             UpdatePage();
 
@@ -40,7 +39,6 @@ namespace SensorsApp
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            Core.Gyroscope.Disable();
 
             updateTimer.Enabled = false;
         }
@@ -49,9 +47,10 @@ namespace SensorsApp
         {
             await GPS.Update();
 
+            velocity = Core.GPS.GetVelocity() * 3.6;
+
             Device.BeginInvokeOnMainThread(() =>
-            {
-                velocity = Core.GPS.GetVelocity() * 3.6; 
+            {    
                 meterCanvas.InvalidateSurface();
             });
         }
@@ -135,13 +134,6 @@ namespace SensorsApp
             };
 
             canvas.DrawText("km/h", info.Width / 2.0f, (drawResolution / 2.0f) + 300.0f, unitTextPaint);
-        }
-
-        private void resetButton_Clicked(object sender, EventArgs e)
-        {
-            //velocity = 0.0f;
-            velocity = Core.Gyroscope.GetRotation().X;
-            meterCanvas.InvalidateSurface();
         }
     }
 }

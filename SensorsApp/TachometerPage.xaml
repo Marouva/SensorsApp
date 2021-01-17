@@ -9,8 +9,6 @@
             <skia:SKCanvasView x:Name="meterCanvas"
                                HeightRequest="400"
                                PaintSurface="OnCanvasViewPaintSurface"/>
-
-            <Button WidthRequest="150" HorizontalOptions="Center" Text="Reset" x:Name="resetButton" Clicked="resetButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
