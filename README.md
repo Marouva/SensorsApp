@@ -7,13 +7,13 @@ __pokaż kutasa__
 
 | API | Status |
 |---|---|
-| Accelerometer | Funktioniert nicht |
+| Accelerometer | ANULOWANY |
 | Bluetooth | ✓ |
 | Compass | ✓ |
 | DeviceInfo | ✓ |
 | GPS |  |
 | Gyroscope | ✓ |
-| Magnetometer |  |
-| MobileNetwork |  |
+| Magnetometer | ANULOWANY |
+| MobileNetwork | ANULOWANY |
 | Wifi |  |
 
