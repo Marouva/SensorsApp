@@ -15,5 +15,5 @@ __pokaż kutasa__
 | Gyroscope | ✓ |
 | Magnetometer | ANULOWANY |
 | MobileNetwork | ANULOWANY |
-| Wifi |  |
+| Wifi | ✓ |
 
