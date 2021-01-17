@@ -1,13 +1,9 @@
-﻿using System;
-using Android;
+﻿using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
-using Android.Support.V4.Content;
 using SensorsApp.Droid.Core;
 
 namespace SensorsApp.Droid
@@ -23,6 +19,7 @@ namespace SensorsApp.Droid
             base.OnCreate(savedInstanceState);
             
             Bluetooth.PrepareRegister();
+            Wifi.PrepareRegister();
             
             //SETUP
             ActivityCompat.RequestPermissions(this, new[]
@@ -31,7 +28,8 @@ namespace SensorsApp.Droid
                 Manifest.Permission.BluetoothAdmin,
                 Manifest.Permission.AccessCoarseLocation,
                 Manifest.Permission.AccessFineLocation,
-                Manifest.Permission.ChangeWifiState
+                Manifest.Permission.ChangeWifiState,
+                Manifest.Permission.AccessWifiState
             }, 1);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

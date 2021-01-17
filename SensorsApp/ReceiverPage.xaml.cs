@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SensorsApp.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,16 +15,8 @@ namespace SensorsApp
         public ReceiverPage()
         {
             InitializeComponent();
-            Bluetooth.SetChangeAction(() =>
-            {
-                List<Receiver> receivers = new List<Receiver>();
-                foreach (KeyValuePair<string, string> bluetoothDevice in Bluetooth.bluetoothDevices)
-                {
-                    receivers.Add(new Receiver(bluetoothDevice.Value, bluetoothDevice.Key));
-                }
-
-                receiverList.ItemsSource = receivers;
-            });
+            Bluetooth.SetChangeAction(RedrawList);
+            Wifi.SetChangeAction(RedrawList);
         }
         
         protected override void OnAppearing()
@@ -38,6 +27,22 @@ namespace SensorsApp
             Bluetooth.Register();
             Wifi.Register();
             receiverList.ItemsSource = new List<Receiver>();
+        }
+
+        private void RedrawList()
+        {
+            List<Receiver> receivers = new List<Receiver>();
+            foreach (KeyValuePair<string, string> bluetoothDevice in Bluetooth.bluetoothDevices)
+            {
+                receivers.Add(new Receiver(bluetoothDevice.Value, bluetoothDevice.Key));
+            }
+
+            foreach (KeyValuePair<string,string> wifiNetwork in Wifi.wifiNetworks)
+            {
+                receivers.Add(new Receiver(wifiNetwork.Value, wifiNetwork.Key));
+            }
+            
+            receiverList.ItemsSource = receivers;
         }
 
         protected override void OnDisappearing()

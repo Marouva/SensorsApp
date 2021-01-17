@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Android.Bluetooth;
 using Android.Content;
 using Android.Net.Wifi;
-using Xamarin.Forms.Platform.Android;
 
 namespace SensorsApp.Droid.Core
 {
@@ -20,7 +18,6 @@ namespace SensorsApp.Droid.Core
 
         public static void Register()
         {
-            // Get a handle to the Wifi
             wifi = (WifiManager)Android.App.Application.Context.GetSystemService(Context.WifiService);
 
             // Start a scan and register the Broadcast receiver to get the list of Wifi Networks
@@ -48,9 +45,16 @@ namespace SensorsApp.Droid.Core
                         continue;
                     }
 
+                    String? ssid = wifinetwork.Ssid;
+                    Console.WriteLine(ssid);
+                    if (string.IsNullOrEmpty(ssid))
+                    {
+                        ssid = "SSID hidden";
+                    }
+
                     if (!SensorsApp.Core.Wifi.wifiNetworks.ContainsKey(bssid))
                     {
-                        SensorsApp.Core.Wifi.wifiNetworks.Add(bssid, wifinetwork.Ssid);
+                        SensorsApp.Core.Wifi.wifiNetworks.Add(bssid, ssid);
                         SensorsApp.Core.Wifi.ListChanged();
                     }
                 }
