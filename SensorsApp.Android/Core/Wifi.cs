@@ -5,6 +5,9 @@ using Android.Net.Wifi;
 
 namespace SensorsApp.Droid.Core
 {
+    /// <summary>
+    /// Wifi Android wrapper
+    /// </summary>
     public static class Wifi
     {
         private static WifiManager wifi;
@@ -35,6 +38,7 @@ namespace SensorsApp.Droid.Core
         {
             public override void OnReceive(Context context, Intent intent)
             {
+                // Scan wifi networks
                 IList<ScanResult> scanwifinetworks = wifi.ScanResults;
                 foreach (ScanResult wifinetwork in scanwifinetworks)
                 {

@@ -18,10 +18,13 @@ namespace SensorsApp.Droid
 
             base.OnCreate(savedInstanceState);
             
+            // Prepare sensors
             Bluetooth.PrepareRegister();
             Wifi.PrepareRegister();
-            
-            //SETUP
+
+            /*
+             * Request necessary permissions
+             */
             ActivityCompat.RequestPermissions(this, new[]
             {
                 Manifest.Permission.Bluetooth,
@@ -32,10 +35,12 @@ namespace SensorsApp.Droid
                 Manifest.Permission.AccessWifiState
             }, 1);
 
+            // Start Xamarin App
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

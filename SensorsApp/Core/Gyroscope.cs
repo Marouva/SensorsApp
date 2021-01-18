@@ -4,6 +4,10 @@ using Xamarin.Essentials;
 
 namespace SensorsApp.Core
 {
+    /// <summary>
+    /// Gyroscope
+    /// unused!
+    /// </summary>
     public static class Gyroscope
     {
         private static SensorSpeed speed       = SensorSpeed.UI;

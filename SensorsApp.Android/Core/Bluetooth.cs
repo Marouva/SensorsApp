@@ -4,6 +4,9 @@ using Android.Content;
 
 namespace SensorsApp.Droid.Core
 {
+    /// <summary>
+    /// BlueTooth Android wrapper
+    /// </summary>
     public static class Bluetooth
     {
         private static BluetoothDeviceReceiver receiver;
@@ -26,7 +29,8 @@ namespace SensorsApp.Droid.Core
                 Console.WriteLine("Device does not support Bluetooth");
                 return;
             }
-            
+
+            // Find nearest blueetoth devices
             receiver = new BluetoothDeviceReceiver();
             Android.App.Application.Context.RegisterReceiver(receiver, new IntentFilter(BluetoothDevice.ActionFound));
             bta.StartDiscovery();
@@ -49,7 +53,7 @@ namespace SensorsApp.Droid.Core
             string action = intent.Action;
 
             if (action != BluetoothDevice.ActionFound) return;
-            
+
             BluetoothDevice bluetoothDevice = (BluetoothDevice)intent.GetParcelableExtra(BluetoothDevice.ExtraDevice);
 
             if (bluetoothDevice == null)

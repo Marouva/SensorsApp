@@ -5,6 +5,9 @@ using Xamarin.Essentials;
 
 namespace SensorsApp.Core
 {
+    /// <summary>
+    /// GPS wrapper
+    /// </summary>
     public static class GPS
     {
         private static SensorSpeed speed       = SensorSpeed.UI;

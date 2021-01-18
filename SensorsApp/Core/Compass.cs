@@ -3,11 +3,14 @@ using Xamarin.Essentials;
 
 namespace SensorsApp.Core
 {
+    /// <summary>
+    /// Compass wrapper
+    /// </summary>
     public static class Compass
     {
         private static SensorSpeed speed = SensorSpeed.Fastest;
-        private static bool enabledOnce = false;
-        public static double heading = 0.0d;
+        private static bool        enabledOnce = false;
+        public  static double      heading = 0.0;
         
         public static void Enable()
         {

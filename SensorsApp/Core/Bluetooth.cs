@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace SensorsApp.Core
 {
+    /// <summary>
+    /// Bluetooth wrapper
+    /// </summary>
     public static class Bluetooth
     {
         private static Action changeAction;

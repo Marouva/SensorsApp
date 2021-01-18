@@ -2,6 +2,9 @@
 
 namespace SensorsApp.Core
 {
+    /// <summary>
+    /// DeviceInfo wrapper
+    /// </summary>
     public static class DeviceInfo
     {
         public static String GetManufacturer()

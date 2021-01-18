@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace SensorsApp.Core
 {
+    /// <summary>
+    /// WiFI wrapper
+    /// </summary>
     public static class Wifi
     {
         private static Action registerAction;
