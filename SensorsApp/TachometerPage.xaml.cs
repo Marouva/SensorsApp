@@ -46,8 +46,7 @@ namespace SensorsApp
         private async void UpdatePage()
         {
             await GPS.Update();
-
-            velocity = Core.GPS.GetVelocity() * 3.6;
+            
 
             Device.BeginInvokeOnMainThread(() =>
             {    

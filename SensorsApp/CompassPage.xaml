@@ -10,8 +10,8 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="65*" />
-                <RowDefinition Height="35*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
             </Grid.RowDefinitions>
 
             <Image Grid.Column="0" Grid.Row="0" Source="kompas.png" x:Name="compassPicture" />
